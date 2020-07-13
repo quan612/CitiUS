@@ -1,0 +1,1738 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DataAccess</name>
+    </assembly>
+    <members>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Account.AccountTransactionRepository.PostTransaction(System.Int32,System.Double,System.String,System.DateTime)">
+            <summary>
+            Post transaction with minimum required transactions
+            </summary>
+            <param name="accountId">eCollect Account number</param>
+            <param name="transactionAmount">Non-zero amount</param>
+            <param name="transactionCode"></param>
+            <param name="transactionDate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Account.AccountTransactionRepository.PostTransaction(System.Int32,System.Double,System.String,System.DateTime,System.String,System.Int32)">
+            <summary>
+            PostTransaction overload used to post reversals
+            </summary>
+            <param name="accountId"></param>
+            <param name="transactionAmount"></param>
+            <param name="transactionCode"></param>
+            <param name="transactionDate"></param>
+            <param name="clientTransactionId"></param>
+            <param name="reversalTransID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Account.AccountTransactionRepository.PostTransaction(System.Int32,System.Double,System.String,System.DateTime,System.Int32,System.String)">
+            <summary>
+            PostTransaction overload to specify adjustment Mode
+            </summary>
+            <param name="accountId"></param>
+            <param name="transactionAmount"></param>
+            <param name="transactionCode"></param>
+            <param name="transactionDate"></param>
+            <param name="adjustmentMode">0=Distribute as normal,3-11=Fee1-9,1=Principal,2=Interest    12 - 16 - IntenalFee 17-21 -InternalFeeInterest</param>
+            <param name="postingOrder">Default posting order is AaBbCcDdEePI123456789</param>
+            <returns></returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Account.AccountTransactionRepository.PostTransaction(System.String,System.Int32,System.Int32,System.Boolean,System.Double,System.Double,System.String,System.DateTime,System.Int32,System.Boolean,System.DateTime,System.Double,System.String,System.Int32,System.String,System.Int32,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32@)">
+            <summary>
+            Post a transaction. The TransactionId of the new transaction is passed using the out int newTransactiondId parameter.
+            </summary>
+            <param name="userID">The userId to post as.</param>
+            <param name="accountID">The account to post to</param>
+            <param name="reversalTransID">The transaction id to reverse</param>
+            <param name="reversalHideFromTrust">Hide the reversal from trust</param>
+            <param name="amount">The amount of the transaction</param>
+            <param name="fee"></param>
+            <param name="transCode">The transaction code to post as (e.g. Direct, Adjustment, DirectREV, etc)</param>
+            <param name="transDate">The date of the transaction</param>
+            <param name="adjustmentMode">The bucket to apply adjusment to. (0=distribute as normal)</param>
+            <param name="userAllowOverpayment">0 = track in overpaid, 1 = post account under $0.00</param>
+            <param name="clearingDate">the date the transaction will clear 01/01/1990 means let eCollect decide</param>
+            <param name="commissionRate">The commission rate for this transaction. -1 means let eCollect decide</param>
+            <param name="postingOrder">Override the posting order. Use empty string to use posting order from profile</param>
+            <param name="desk">New commission desk. 0 = use current desk</param>
+            <param name="commissionUser">New commission user. Empty string = use current</param>
+            <param name="statusCode">The new status code to apply. -1 = no new status</param>
+            <param name="clientTransID">The client's transaction Id</param>
+            <param name="payeeAccount1"></param>
+            <param name="payeeAccount2"></param>
+            <param name="payeeAccount3"></param>
+            <param name="payeeAccount4"></param>
+            <param name="equipmentDescription"></param>
+            <param name="newTransactionId">The transactionId of the newly posted transaction</param>
+            <returns>The return code from spPostTransaction. Use TransErrorCodes(int errCode) to resolve 0 = success. </returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Account.AccountRepository.IsActionAllowedForCycleState(System.Int32,System.Int32)">
+            <summary>
+            Evaluates if a given action code can be applied to a specific account base on its action cycle profile and action cycle history.
+            </summary>
+            <param name="accountId"></param>
+            <param name="actionCode"></param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.CustomProcessExceptionRepository.CustomProcessExceptionFromValidationViewReader(GlobalCollection.eCollect.Server.Services.DataContracts.Job,System.Data.IDataReader,System.Boolean,System.String,System.String)">
+            <summary>
+            Build a CustomProcessException object from data
+            </summary>
+            <param name="job"></param>
+            <param name="reader"></param>
+            <param name="isError"></param>
+            <param name="message"></param>
+            <param name="exceptionType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FieldCodesMappingRepository.GetFieldCodeMappings(System.String,System.String)">
+            <summary>
+            The get field code mappings.
+            </summary>
+            <param name="organizationCode">
+            The organization code.
+            </param>
+            <param name="codeType">
+            The code type.
+            </param>
+            <returns>
+            The collection of <see cref="T:GlobalCollection.eCollect.Server.Services.DTO.Automation.FieldCodeMapping"/>.
+            </returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FieldCodesMappingRepository.GetFieldCodeMappingsForOrganization(System.String)">
+            <summary>
+            Retrieves all field codes mappings for an organization
+            </summary>
+            <param name="organizationCode">The organization to retrieve the field code mappings for.</param>
+            <returns>A collection of all field code mappings for an organization.</returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRowRepository.GetEmptyFileReceivedRowDataTable">
+            <summary>
+            Gets an empty data table with all columns from the file received row table.
+            </summary>
+            <returns>An empty data table with columns from the file received row table.</returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRowRepository.BulkInsertRows(System.Data.DataTable)">
+            <summary>
+            Bulk-inserts the rows for a file.
+            </summary>
+            <param name="table">A data table containing the rows in the file.</param>
+        </member>
+        <member name="T:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRepository">
+            <summary>
+            File Received Repository Class
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRepository.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRepository"/> class.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRepository.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRepository"/> class. 
+            </summary>
+            <param name="connectionString">Connection String</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRepository.WasFileAlreadyReceived(System.String)">
+            <summary>
+            Checks if a file was already added to the database.
+            </summary>
+            <param name="fileName">The path and file name to check.</param>
+            <returns>True if the file was already received.</returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRepository.InsertFileReceivedRecord(System.String,System.DateTime,System.Int32)">
+            <summary>
+            Inserts a new record into the file received table.
+            </summary>
+            <param name="fileName">The file name and path of the file to insert.</param>
+            <param name="receivedDate">The date and time the file was received.</param>
+            <param name="clientFileTypeId">The client file type id associated with the file.</param>
+            <returns>The file received id of the new file received record.</returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRepository.SetLoadEndTime(System.Int32)">
+            <summary>
+            Sets the load end time of a file received record.
+            </summary>
+            <param name="fileReceivedId">The unique id of the file received record.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRepository.SetLoadEndTime(System.Int32,System.DateTime)">
+            <summary>
+            Sets the load end time of a file received record.
+            </summary>
+            <param name="fileReceivedId">The unique id of the file received record.</param>
+            <param name="loadEndTime">The time that the load completed.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRepository.SetEcuCreationBeginTime(System.Int32)">
+            <summary>
+            Set Creation Begin Time
+            </summary>
+            <param name="fileReceivedId">File Received Id</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRepository.SetEcuCreationBeginTime(System.Int32,System.DateTime)">
+            <summary>
+            Set Creation Begin Time
+            </summary>
+            <param name="fileReceivedId">File Received Id</param>
+            <param name="timestamp">execution time</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRepository.SetEcuCreationBeginTime(System.String)">
+            <summary>
+            Set Creation Begin Time 
+            </summary>
+            <param name="organizationCode">Organization Code</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRepository.SetEcuCreationBeginTime(System.String,System.DateTime)">
+            <summary>
+            Set Creation Begin Time
+            </summary>
+            <param name="organizationCode">Organization Code</param>
+            <param name="timestamp">execution time</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRepository.SetEcuCreationEndTime(System.Int32)">
+            <summary>
+            Set Creation End Time
+            </summary>
+            <param name="fileReceivedId">File Received Id</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRepository.SetEcuCreationEndTime(System.Int32,System.DateTime)">
+            <summary>
+            Set Creation End Time
+            </summary>
+            <param name="fileReceivedId">File Received Id</param>
+            <param name="timestamp">execution time</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRepository.SetEcuCreationEndTime(System.String)">
+            <summary>
+            Set Creation End Time
+            </summary>
+            <param name="organizationCode">Organization Code</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRepository.SetEcuCreationEndTime(System.String,System.DateTime)">
+            <summary>
+            Set Creation End Time
+            </summary>
+            <param name="organizationCode">Organization Code</param>
+            <param name="timestamp">Execution time</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRepository.GetProcessEndTime(System.Int32)">
+            <summary>
+            Get Process End Time
+            </summary>
+            <param name="fileReceivedId">File Received Id</param>
+            <returns>Process End Time</returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRepository.GetLastProcessingDateByClientFileType(System.Int32)">
+            <summary>
+            Get Last Processing Date By Client File Type
+            </summary>
+            <param name="clientFileTypeId">client File Type Id</param>
+            <returns>Last Processing Date</returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRepository.SetFileProcessingBeginTime(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Set File Processing Begin Time
+            </summary>
+            <param name="fileIdList">file Id List</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRepository.SetFileProcessingEndTime(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Set File Processing End Time
+            </summary>
+            <param name="fileIdList">file Id List</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRepository.SetFileProcessingBeginTime(System.Int32)">
+            <summary>
+            Set File Processing Begin Time
+            </summary>
+            <param name="fileReceivedId">File Received Id</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRepository.SetFileProcessingEndTime(System.Int32)">
+            <summary>
+            Set File Processing End Time
+            </summary>
+            <param name="fileReceivedId">File Received Id</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRepository.GetLastFileReceivedEntries(System.Int32,System.Boolean)">
+            <summary>
+            Get Last File Received Entries by days
+            </summary>
+            <param name="lastNumberOfDays">Number of days</param>
+            <param name="includeErrors">Include Errors</param>
+            <returns>Return Selected List of Entries</returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRepository.CheckFileValidation(System.String,GlobalCollection.eCollect.DataAccess.Automation.ClientFileType,System.Int32)">
+            <summary>
+            Check File Validation
+            </summary>
+            <param name="fileName">File Name</param>
+            <param name="clientFileType">Client File Type</param>
+            <param name="fileReceivedId">File Received Id</param>
+            <returns>Validation Status</returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRepository.GetFileReceivedEntryStatus(System.String)">
+            <summary>
+            Get File Received Entry Status by File Name
+            </summary>
+            <param name="fileName">File Name</param>
+            <returns>Return selected status</returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRepository.GetFileReceivedId(System.String)">
+            <summary>
+            Get File Received Id by fileName
+            </summary>
+            <param name="fileName">File Name</param>
+            <returns>return selected file received id</returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileReceivedRepository.UpdateFileValidationStatus(System.Int32,GlobalCollection.eCollect.Server.Services.DataContracts.FileReceivedEntryStatus,System.String,System.String)">
+            <summary>
+            Update File Validation Status
+            </summary>
+            <param name="fileReceivedId">File Received Id</param>
+            <param name="fileReceivedEntryStatus">File Received Entry Status</param>
+            <param name="machineName">Optional parameter Machine Name</param>
+            <param name="userName">Optional parameter User Name</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileSendQueueRepository.UpdateFileSentIdForTable(System.Guid,System.Int32,System.String)">
+            <summary>
+            Update File Send Id Field by table
+            </summary>
+            <param name="batchId">Batch Id</param>
+            <param name="fileId">File Id</param>
+            <param name="tableName">Table name</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.FileSendQueueRepository.UpdateFileSentIdForTable(System.String,System.Int32,System.String)">
+            <summary>
+            Update File Send Id Field by table
+            </summary>
+            <param name="primaryKeyFilterValue">Primary Keys Value</param>
+            <param name="fileId">File Id</param>
+            <param name="tableName">Table name</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.IFieldCodesMappingRepository.GetFieldCodeMappings(System.String,System.String)">
+            <summary>
+            The get field code mappings.
+            </summary>
+            <param name="organizationCode">
+            The organization code.
+            </param>
+            <param name="codeType">
+            The code type.
+            </param>
+            <returns>
+            The collection of <see cref="T:GlobalCollection.eCollect.Server.Services.DTO.Automation.FieldCodeMapping"/>.
+            </returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.IFieldCodesMappingRepository.GetFieldCodeMappingsForOrganization(System.String)">
+            <summary>
+            Retrieves all field codes mappings for an organization
+            </summary>
+            <param name="organizationCode">The organization to retrieve the field code mappings for.</param>
+            <returns>A collection of all field code mappings for an organization.</returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRepository.WasFileAlreadyReceived(System.String)">
+            <summary>
+            Checks if a file was already added to the database.
+            </summary>
+            <param name="fileName">The path and file name to check.</param>
+            <returns>True if the file was already received.</returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRepository.InsertFileReceivedRecord(System.String,System.DateTime,System.Int32)">
+            <summary>
+            Inserts a new record into the file received table.
+            </summary>
+            <param name="fileName">The file name and path of the file to insert.</param>
+            <param name="receivedDate">The date and time the file was received.</param>
+            <param name="clientFileTypeId">The client file type id associated with the file.</param>
+            <returns>The file received id of the new file received record.</returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRepository.SetLoadEndTime(System.Int32)">
+            <summary>
+            Sets the load end time of a file received record.
+            </summary>
+            <param name="fileReceivedId">The unique id of the file received record.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRepository.SetLoadEndTime(System.Int32,System.DateTime)">
+            <summary>
+            Sets the load end time of a file received record.
+            </summary>
+            <param name="fileReceivedId">The unique id of the file received record.</param>
+            <param name="loadEndTime">The time that the load completed.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRepository.SetEcuCreationBeginTime(System.Int32)">
+            <summary>
+            Set Creation Begin Time
+            </summary>
+            <param name="fileReceivedId">File Received Id</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRepository.SetEcuCreationBeginTime(System.Int32,System.DateTime)">
+            <summary>
+            Set Creation Begin Time
+            </summary>
+            <param name="fileReceivedId">File Received Id</param>
+            <param name="timestamp">execution time</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRepository.SetEcuCreationBeginTime(System.String)">
+            <summary>
+            Set Creation Begin Time 
+            </summary>
+            <param name="organizationCode">Organization Code</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRepository.SetEcuCreationBeginTime(System.String,System.DateTime)">
+            <summary>
+            Set Creation Begin Time
+            </summary>
+            <param name="organizationCode">Organization Code</param>
+            <param name="timestamp">execution time</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRepository.SetEcuCreationEndTime(System.Int32)">
+            <summary>
+            Set Creation End Time
+            </summary>
+            <param name="fileReceivedId">File Received Id</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRepository.SetEcuCreationEndTime(System.Int32,System.DateTime)">
+            <summary>
+            Set Creation End Time
+            </summary>
+            <param name="fileReceivedId">File Received Id</param>
+            <param name="timestamp">execution time</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRepository.SetEcuCreationEndTime(System.String)">
+            <summary>
+            Set Creation End Time
+            </summary>
+            <param name="organizationCode">Organization Code</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRepository.SetEcuCreationEndTime(System.String,System.DateTime)">
+            <summary>
+            Set Creation End Time
+            </summary>
+            <param name="organizationCode">Organization Code</param>
+            <param name="timestamp">Execution time</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRepository.GetProcessEndTime(System.Int32)">
+            <summary>
+            Get Process End Time
+            </summary>
+            <param name="fileReceivedId">File Received Id</param>
+            <returns>Process End Time</returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRepository.GetLastProcessingDateByClientFileType(System.Int32)">
+            <summary>
+            Get Last Processing Date By Client File Type
+            </summary>
+            <param name="clientFileTypeId">client File Type Id</param>
+            <returns>Last Processing Date</returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRepository.SetFileProcessingBeginTime(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Set File Processing Begin Time
+            </summary>
+            <param name="fileIdList">file Id List</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRepository.SetFileProcessingEndTime(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Set File Processing End Time
+            </summary>
+            <param name="fileIdList">file Id List</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRepository.SetFileProcessingBeginTime(System.Int32)">
+            <summary>
+            Set File Processing Begin Time
+            </summary>
+            <param name="fileReceivedId">File Received Id</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRepository.SetFileProcessingEndTime(System.Int32)">
+            <summary>
+            Set File Processing End Time
+            </summary>
+            <param name="fileReceivedId">File Received Id</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRepository.GetLastFileReceivedEntries(System.Int32,System.Boolean)">
+            <summary>
+            Get Last File Received Entries by days
+            </summary>
+            <param name="lastNumberOfDays">Number of days</param>
+            <param name="includeErrors">Include Errors</param>
+            <returns>Return Selected List of Entries</returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRepository.CheckFileValidation(System.String,GlobalCollection.eCollect.DataAccess.Automation.ClientFileType,System.Int32)">
+            <summary>
+            Check File Validation
+            </summary>
+            <param name="fileName">File Name</param>
+            <param name="clientFileType">Client File Type</param>
+            <param name="fileReceivedId">File Received Id</param>
+            <returns>Validation Status</returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRepository.GetFileReceivedEntryStatus(System.String)">
+            <summary>
+            Get File Received Entry Status by File Name
+            </summary>
+            <param name="fileName">File Name</param>
+            <returns>Return selected status</returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRepository.GetFileReceivedId(System.String)">
+            <summary>
+            Get File Received Id by fileName
+            </summary>
+            <param name="fileName">File Name</param>
+            <returns>return selected file received id</returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRepository.UpdateFileValidationStatus(System.Int32,GlobalCollection.eCollect.Server.Services.DataContracts.FileReceivedEntryStatus,System.String,System.String)">
+            <summary>
+            Update File Validation Status
+            </summary>
+            <param name="fileReceivedId">File Received Id</param>
+            <param name="fileReceivedEntryStatus">File Received Entry Status</param>
+            <param name="machineName">Optional parameter Machine Name</param>
+            <param name="userName">Optional parameter User Name</param>
+        </member>
+        <member name="P:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRepository.ConnectionString">
+            <summary>
+            Gets or sets ConnectionString.
+            </summary>
+        </member>
+        <member name="P:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRepository.ConnectionStringApps">
+            <summary>
+            Gets or sets ConnectionStringApps.
+            </summary>
+        </member>
+        <member name="P:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRepository.ApplicationName">
+            <summary>
+            Gets or sets ApplicationName.
+            </summary>
+        </member>
+        <member name="P:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRepository.eCollectDb">
+            <summary>
+            Gets eCollectDb.
+            </summary>
+        </member>
+        <member name="P:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRepository.eCollectAppsDb">
+            <summary>
+            Gets eCollectAppsDb.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRowRepository.GetEmptyFileReceivedRowDataTable">
+            <summary>
+            Gets an empty data table with all columns from the file received row table.
+            </summary>
+            <returns>An empty data table with columns from the file received row table.</returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.IFileReceivedRowRepository.BulkInsertRows(System.Data.DataTable)">
+            <summary>
+            Bulk-inserts the rows for a file.
+            </summary>
+            <param name="table">A data table containing the rows in the file.</param>
+        </member>
+        <member name="P:GlobalCollection.eCollect.DataAccess.Automation.IOrganizationConfigRepository.ConnectionString">
+            <summary>
+            Gets or sets ConnectionString.
+            </summary>
+        </member>
+        <member name="P:GlobalCollection.eCollect.DataAccess.Automation.IOrganizationConfigRepository.ConnectionStringApps">
+            <summary>
+            Gets or sets ConnectionStringApps.
+            </summary>
+        </member>
+        <member name="P:GlobalCollection.eCollect.DataAccess.Automation.IOrganizationConfigRepository.ApplicationName">
+            <summary>
+            Gets or sets ApplicationName.
+            </summary>
+        </member>
+        <member name="P:GlobalCollection.eCollect.DataAccess.Automation.IOrganizationConfigRepository.eCollectDb">
+            <summary>
+            Gets eCollectDb.
+            </summary>
+        </member>
+        <member name="P:GlobalCollection.eCollect.DataAccess.Automation.IOrganizationConfigRepository.eCollectAppsDb">
+            <summary>
+            Gets eCollectAppsDb.
+            </summary>
+        </member>
+        <member name="T:GlobalCollection.eCollect.DataAccess.Automation.ClientFileTypeMode">
+            <summary>
+            Enumeration type indicating each incoming client file type.
+            </summary>
+        </member>
+        <member name="F:GlobalCollection.eCollect.DataAccess.Automation.ClientFileTypeMode.Unknown">
+            <summary>
+            Unknown incoming file type.
+            </summary>
+        </member>
+        <member name="F:GlobalCollection.eCollect.DataAccess.Automation.ClientFileTypeMode.FixedWidth">
+            <summary>
+            Fixed width incoming file type.
+            </summary>
+        </member>
+        <member name="F:GlobalCollection.eCollect.DataAccess.Automation.ClientFileTypeMode.Delimited">
+            <summary>
+            Delimited incoming file type.
+            </summary>
+        </member>
+        <member name="F:GlobalCollection.eCollect.DataAccess.Automation.ClientFileTypeMode.Excel">
+            <summary>
+            Excel incoming file type.
+            </summary>
+        </member>
+        <member name="F:GlobalCollection.eCollect.DataAccess.Automation.ClientFileTypeMode.Xml">
+            <summary>
+            Incoming file is of xml format.
+            </summary>
+        </member>
+        <member name="F:GlobalCollection.eCollect.DataAccess.Automation.ClientFileTypeMode.WrappedDelimited">
+            <summary>
+            The incoming file contains records where each record type can 
+            span 2 or more lines.
+            </summary>
+        </member>
+        <member name="T:GlobalCollection.eCollect.DataAccess.Automation.ClientFileTypeValidationRule">
+            <summary>
+            Enumeration type indicating Validation Rule.
+            </summary>
+        </member>
+        <member name="F:GlobalCollection.eCollect.DataAccess.Automation.ClientFileTypeValidationRule.Size">
+            <summary>
+            Size Validation.
+            </summary>
+        </member>
+        <member name="F:GlobalCollection.eCollect.DataAccess.Automation.ClientFileTypeValidationRule.Encoding">
+            <summary>
+            File encoding
+            </summary>
+        </member>
+        <member name="F:GlobalCollection.eCollect.DataAccess.Automation.ClientFileTypeValidationRule.EmptyFile">
+            <summary>
+            File encoding
+            </summary>
+        </member>
+        <member name="T:GlobalCollection.eCollect.DataAccess.Automation.ClientFileType">
+            <summary>
+            Client File Type Structure
+            </summary>
+        </member>
+        <member name="T:GlobalCollection.eCollect.DataAccess.Automation.ClientFileTypeRepository">
+            <summary>
+            This class provides access to the Client File Type table.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.ClientFileTypeRepository.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:GlobalCollection.eCollect.DataAccess.Automation.ClientFileTypeRepository"/> class.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.ClientFileTypeRepository.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GlobalCollection.eCollect.DataAccess.Automation.ClientFileTypeRepository"/> class.
+            </summary>
+            <param name="connectionString">
+            The connection string.
+            </param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.ClientFileTypeRepository.GetClientFileTypesForWatcher">
+            <summary>
+            Gets all of the client file types for which file watcher has been enabled.
+            </summary>
+            <returns>
+            The list of client file type records.
+            </returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.ClientFileTypeRepository.GetClientFileTypeRecordByOrganization(System.String)">
+            <summary>
+            Get the file type record by the organization/client code.
+            </summary>
+            <param name="organizationCode">
+            The organization code.
+            </param>
+            <returns>
+            The client file type record.
+            </returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.ClientFileTypeRepository.GetClientFileTypeRecordById(System.Int32)">
+            <summary>
+            Gets the client file type record by id.
+            </summary>
+            <param name="id">
+            The id.
+            </param>
+            <returns>
+            The client file type record.
+            </returns>
+            <exception cref="T:System.ApplicationException">
+            Thrown when a record cannot be found for the id.
+            </exception>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.ClientFileTypeRepository.GetFileProcessorClass(System.Int32)">
+            <summary>
+            Get File Processor Class
+            </summary>
+            <param name="clientFileTypeId">Client File Type Id</param>
+            <returns>File Processor Class Name</returns>
+        </member>
+        <member name="T:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository">
+            <summary>
+            DataAccess class used for logging.
+            </summary>
+        </member>
+        <member name="F:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository.LogCategory">
+            <summary>
+            The log category.
+            </summary>
+        </member>
+        <member name="F:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository._jobQueueTable">
+            <summary>
+            The Job queue table.
+            </summary>
+        </member>
+        <member name="F:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository._clientFileTypeTable">
+            <summary>
+            The client file type table.
+            </summary>
+        </member>
+        <member name="F:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository._claimJobByTypeProc">
+            <summary>
+            The claim job by type stored procedure.
+            </summary>
+        </member>
+        <member name="F:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository._unclaimJobProc">
+            <summary>
+            The UNCLAIM job stored procedure.
+            </summary>
+        </member>
+        <member name="F:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository._restartJobProc">
+            <summary>
+            The restart job stored procedure.
+            </summary>
+        </member>
+        <member name="F:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository._fileReceivedTable">
+            <summary>
+            The file received table.
+            </summary>
+        </member>
+        <member name="F:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository._logHost">
+            <summary>
+            The _log host.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository"/> class.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository"/> class.
+            </summary>
+            <param name="connectionstring">
+            The connection string.
+            </param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository.InsertJobQueue(GlobalCollection.eCollect.Server.Services.DataContracts.Job)">
+            <summary>
+            Insert job into the queue.
+            </summary>
+            <param name="job">
+            The job.
+            </param>
+            <returns>
+            The Job queue id of the inserted job.
+            </returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository.ClaimJobByType(System.String,GlobalCollection.eCollect.Server.Services.DataContracts.JobType[])">
+            <summary>
+            Claims the next job to run from the job queue.
+            </summary>
+            <param name="serverId">
+            The application server that is claiming the job.
+            </param>
+            <param name="jobTypes">
+            The job types supported by the application server.
+            </param>
+            <returns>
+            The next job to run.
+            </returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository.ClaimJob(System.String)">
+            <summary>
+            Claims the next job that is not an ARx auto-processor job type.
+            </summary>
+            <param name="serverId">
+            The application server that is claiming the job.
+            </param>
+            <returns>
+            The next job to run.
+            </returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository.UpdateProcessId(GlobalCollection.eCollect.Server.Services.DataContracts.Job,System.Int32)">
+            <summary>
+            The method to update process Id in JobQueue table.
+            </summary>
+            <param name="job">
+            The job entity.
+            </param>
+            <param name="processId">
+            The process Id.
+            </param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository.UpdateQueueStatus(System.Int64,GlobalCollection.eCollect.Server.Services.DataContracts.JobQueueStatus)">
+            <summary>
+            The method to set Queue status by Job Id
+            </summary>
+            <param name="jobId">
+            The job id.
+            </param>
+            <param name="status">
+            The status.
+            </param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository.CloseJob(GlobalCollection.eCollect.Server.Services.DataContracts.Job)">
+            <summary>
+            Updates the queue with the current status of the job.
+            </summary>
+            <param name="job">
+            The job to update.
+            </param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository.MarkJobStarted(System.Int64)">
+            <summary>
+            Signals that the job as started.
+            </summary>
+            <param name="jobQueueId">
+            The job queue id to signal as started.
+            </param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository.UnclaimJob(System.Guid)">
+            <summary>
+            Resets the job to queued.
+            </summary>
+            <param name="transactionId">
+            The transaction id.
+            </param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository.SourceFileExists(System.String)">
+            <summary>
+            Check whether the file has already be received by the system.
+            </summary>
+            <param name="fileName">
+            The file name.
+            </param>
+            <returns>
+            True or False.
+            </returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository.GetInProcessCountForServer(System.String)">
+            <summary>
+            Get the count of jobs being executed on the specified application server.
+            </summary>
+            <param name="serverId">
+            The server id.
+            </param>
+            <returns>
+            The count.
+            </returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository.UnholdJob(System.Int64)">
+            <summary>
+            UNHOLDS the job.
+            </summary>
+            <param name="jobQueueId">
+            The job queue id.
+            </param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository.HoldJob(System.Int64)">
+            <summary>
+            Places the job OnHold.
+            </summary>
+            <param name="jobQueueId">
+            The job queue id.
+            </param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository.GetJobQueueInfo">
+            <summary>
+            Retrieves all relevant information relating to the queued jobs.
+            </summary>
+            <returns>
+            List of the details.
+            </returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository.GetControllableJobs">
+            <summary>
+            Gets the list of Controllable jobs.
+            </summary>
+            <returns>
+            The list of controllable jobs.
+            </returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository.RestartJob(System.Int64)">
+            <summary>
+            Restart jobs that are not currently running.
+            </summary>
+            <param name="jobQueueId">
+            The job id to restart.
+            </param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository.GetLastCompleteJobInfo(GlobalCollection.eCollect.DataAccess.Automation.ClientFileType,GlobalCollection.eCollect.Server.Services.DataContracts.JobType)">
+            <summary>
+            Gets the last completed job.
+            </summary>
+            <param name="clientFileType">
+            The client file type.
+            </param>
+            <param name="jobType">
+            The job type.
+            </param>
+            <returns>
+            Job details.
+            </returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository.GetAverageExecutionTime(System.Int32,GlobalCollection.eCollect.Server.Services.DataContracts.JobType,System.Int32)">
+            <summary>
+            Gets the average execution time of a job in seconds.
+            </summary>
+            <param name="clientFileTypeId">The client file type id to calculate the average for.</param>
+            <param name="jobType">The job type to calculate the average for.</param>
+            <param name="numberOfDays">The number of days to include when calculating the average.</param>
+            <returns>The average execution time of this job in seconds.</returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository.GetJobQueueEntry(System.Int64)">
+            <summary>
+            Gets a specific job queue entry.
+            </summary>
+            <param name="jobQueueId">The unique id of the job queue entry to retrieve.</param>
+            <returns>The requested job queue entry or null if not found.</returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository.GetJob(System.Int64)">
+            <summary>
+            Gets a specific job queue entry.
+            </summary>
+            <param name="jobQueueId">The unique id of the job queue entry to retrieve.</param>
+            <returns>The requested job queue entry or null if not found.</returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository.JobQueueEntryFromReader(System.Data.IDataReader)">
+            <summary>
+            Job queue entry from reader.
+            </summary>
+            <param name="reader">
+            The reader.
+            </param>
+            <returns>
+            The <see cref="T:GlobalCollection.eCollect.Server.Services.DataContracts.JobQueueEntry"/>.
+            </returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.QueueRepository.DataRowToJob(System.Data.DataRow)">
+            <summary>
+            Data row to job.
+            </summary>
+            <param name="jobRow">
+            The DataRow.
+            </param>
+            <returns>
+            The <see cref="T:GlobalCollection.eCollect.Server.Services.DataContracts.Job"/>.
+            </returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Automation.SQLFileReceiver.SplitFields(GlobalCollection.eCollect.DataAccess.Automation.ClientFileType,System.Data.DataRow@,System.String)">
+            <summary>
+            If the record is delimited, split the fields.
+            </summary>
+            <param name="cft">
+            The clientfiletype object.
+            </param>
+            <param name="dr">
+            reference to the datarow.
+            </param>
+            <param name="RowData">
+            string containing the row data.
+            </param>
+        </member>
+        <member name="T:GlobalCollection.eCollect.DataAccess.BaseRepository">
+            <summary>
+            The base class for all dataaccess/utility api classes.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.BaseRepository.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:GlobalCollection.eCollect.DataAccess.BaseRepository"/> class.
+            </summary>
+        </member>
+        <member name="P:GlobalCollection.eCollect.DataAccess.BaseRepository.ConnectionString">
+            <summary>
+            Gets or sets ConnectionString.
+            </summary>
+        </member>
+        <member name="P:GlobalCollection.eCollect.DataAccess.BaseRepository.ConnectionStringApps">
+            <summary>
+            Gets or sets ConnectionStringApps.
+            </summary>
+        </member>
+        <member name="P:GlobalCollection.eCollect.DataAccess.BaseRepository.ApplicationName">
+            <summary>
+            Gets or sets ApplicationName.
+            </summary>
+        </member>
+        <member name="P:GlobalCollection.eCollect.DataAccess.BaseRepository.eCollectDb">
+            <summary>
+            Gets eCollectDb.
+            </summary>
+        </member>
+        <member name="P:GlobalCollection.eCollect.DataAccess.BaseRepository.eCollectAppsDb">
+            <summary>
+            Gets eCollectAppsDb.
+            </summary>
+        </member>
+        <member name="T:GlobalCollection.eCollect.DataAccess.EmailServerAuthType">
+            <summary>
+            Enum specifying the authentication type.
+            </summary>
+        </member>
+        <member name="F:GlobalCollection.eCollect.DataAccess.EmailServerAuthType.Anonymous">
+            <summary>
+            Anonymous access.
+            </summary>
+        </member>
+        <member name="F:GlobalCollection.eCollect.DataAccess.EmailServerAuthType.UsernamePassword">
+            <summary>
+            Must provide username/password to access the smtp server.
+            </summary>
+        </member>
+        <member name="F:GlobalCollection.eCollect.DataAccess.EmailServerAuthType.Ntlm">
+            <summary>
+            NTLM authentication access.
+            </summary>
+        </member>
+        <member name="T:GlobalCollection.eCollect.DataAccess.EmailNotificationRepository">
+            <summary>
+            Class that provides common email services.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.EmailNotificationRepository.GetEmailListAddresses(System.String)">
+            <summary>
+            Gets the list of email addresses belonging to the list.
+            </summary>
+            <param name="emailListName">
+            The email list name.
+            </param>
+            <returns>
+            The list of email address entries.
+            </returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.EmailNotificationRepository.GetEmailAddressFromName(System.String)">
+            <summary>
+            returns the 1st email address from the ecollect table EmailAddresses, matching on the name
+            </summary>
+            <param name="emailAddressName">name of the email address</param>
+            <returns>email address list entry. includes actual email address and the display name</returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.EmailNotificationRepository.GetServerSettings">
+            <summary>
+            Retrieves the smtp email server settings from eCollect's database (table called EmailServer)
+            Only retrieves where 'mode=2'  2 means 'Server'
+            </summary>
+            <returns>The server settings.</returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.EmailNotificationRepository.GetServerSettings(System.String)">
+            <summary>
+            Retrieves the smtp email server settings from eCollect's database (table called EmailServer)
+            Only retrieves where 'mode=2'  2 means 'Server'
+            </summary>
+            <param name="serverName">The server name.</param>
+            <returns>The server settings.</returns>
+        </member>
+        <member name="T:GlobalCollection.eCollect.DataAccess.EmailNotificationServerSettings">
+            <summary>
+            Class that encapsulates the smtp server settings.
+            </summary>
+        </member>
+        <member name="P:GlobalCollection.eCollect.DataAccess.EmailNotificationServerSettings.SmtpPort">
+            <summary>
+            Gets or sets SmtpPort.
+            </summary>
+        </member>
+        <member name="P:GlobalCollection.eCollect.DataAccess.EmailNotificationServerSettings.SmtpUsername">
+            <summary>
+            Gets or sets SmtpUsername.
+            </summary>
+        </member>
+        <member name="P:GlobalCollection.eCollect.DataAccess.EmailNotificationServerSettings.SmtpPassword">
+            <summary>
+            Gets or sets SmtpPassword.
+            </summary>
+        </member>
+        <member name="P:GlobalCollection.eCollect.DataAccess.EmailNotificationServerSettings.SmtpServerHost">
+            <summary>
+            Gets or sets SmtpServerHost.
+            </summary>
+        </member>
+        <member name="P:GlobalCollection.eCollect.DataAccess.EmailNotificationServerSettings.SmtpAuthType">
+            <summary>
+            Gets or sets SmtpAuthType.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Letter.LetterRepository.GetEligibleAccounts(System.DateTime)">
+            <summary>
+            Get all e-collect Accounts eligible for a letter on runDate
+            </summary>
+            <param name="runDate"></param>
+            <returns>List Of Accounts</returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Letter.LetterRepository.GetLetterPlans">
+            <summary>
+            Get all E-collect letter plans
+            </summary>
+            <returns>List of letter plans</returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.Letter.LetterRepository.QueueLetters(System.Collections.Generic.List{GlobalCollection.eCollect.Server.Services.DTO.Letter.LetterToSend},System.DateTime)">
+            <summary>
+            check if account exists in letterplanlastrun table then update
+            else insert new record and 
+            Exec SpQueueLetter
+            </summary>
+            <param name="letterToSends"></param>
+            <param name="runDate"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GlobalCollection.eCollect.DataAccess.LogRepository">
+            <summary>
+            DataAccess class to insert to the log table.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.LogRepository.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:GlobalCollection.eCollect.DataAccess.LogRepository"/> class.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.LogRepository.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GlobalCollection.eCollect.DataAccess.LogRepository"/> class.
+            </summary>
+            <param name="connectionString">
+            The connection string.
+            </param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.LogRepository.InsertLogEntry(GlobalCollection.eCollect.Server.Services.DataContracts.LogEntry)">
+            <summary>
+            Inserts the logentry.
+            </summary>
+            <param name="logEntry">
+            The log entry.
+            </param>
+            <returns>
+            The log id.
+            </returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.LogRepository.InsertNewLogEntryRecord(GlobalCollection.eCollect.Server.Services.DataContracts.LogEntry)">
+            <summary>
+            Inserts the new entry into the log table
+            </summary>
+            <param name="logEntry">
+            The log entry.
+            </param>
+            <returns>
+            The log id
+            </returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.LogRepository.GetRecentLogEntries(System.Int32)">
+            <summary>
+            Gets the specified number of recent entries.
+            </summary>
+            <param name="numberOfEntries">
+            The number of entries.
+            </param>
+            <returns>
+            The list of recent entries.
+            </returns>
+        </member>
+        <member name="T:GlobalCollection.eCollect.DataAccess.SafeDataReader">
+            <summary>
+            This is a DataReader that 'fixes' any null values before
+            they are returned to our business code.
+            </summary>
+        </member>
+        <member name="P:GlobalCollection.eCollect.DataAccess.SafeDataReader.DataReader">
+            <summary>
+            Get a reference to the underlying data reader
+            object that actually contains the data from
+            the data source.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.#ctor(System.Data.IDataReader)">
+            <summary>
+            Initializes the SafeDataReader object to use data from
+            the provided DataReader object.
+            </summary>
+            <param name="dataReader">The source DataReader object containing the data.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetString(System.String)">
+            <summary>
+            Gets a string value from the datareader.
+            </summary>
+            <remarks>
+            Returns empty string for null.
+            </remarks>
+            <param name="name">Name of the column containing the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetString(System.Int32)">
+            <summary>
+            Gets a string value from the datareader.
+            </summary>
+            <remarks>
+            Returns empty string for null.
+            </remarks>
+            <param name="i">Ordinal column position of the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetValue(System.String)">
+            <summary>
+            Gets a value of type <see cref="T:System.Object" /> from the datareader.
+            </summary>
+            <param name="name">Name of the column containing the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetValue(System.Int32)">
+            <summary>
+            Gets a value of type <see cref="T:System.Object" /> from the datareader.
+            </summary>
+            <param name="i">Ordinal column position of the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetInt32(System.String)">
+            <summary>
+            Gets an integer from the datareader.
+            </summary>
+            <remarks>
+            Returns 0 for null.
+            </remarks>
+            <param name="name">Name of the column containing the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetInt32(System.Int32)">
+            <summary>
+            Gets an integer from the datareader.
+            </summary>
+            <remarks>
+            Returns 0 for null.
+            </remarks>
+            <param name="i">Ordinal column position of the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetNullableInt32(System.String)">
+            <summary>
+            Gets an integer from the datareader.
+            </summary>
+            <remarks>
+            Returns 0 for null.
+            </remarks>
+            <param name="name">Name of the column containing the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetNullableInt32(System.Int32)">
+            <summary>
+            Gets an integer from the datareader.
+            </summary>
+            <remarks>
+            Returns 0 for null.
+            </remarks>
+            <param name="i">Ordinal column position of the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetDouble(System.String)">
+            <summary>
+            Gets a double from the datareader.
+            </summary>
+            <remarks>
+            Returns 0 for null.
+            </remarks>
+            <param name="name">Name of the column containing the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetDouble(System.Int32)">
+            <summary>
+            Gets a double from the datareader.
+            </summary>
+            <remarks>
+            Returns 0 for null.
+            </remarks>
+            <param name="i">Ordinal column position of the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetNullableDouble(System.String)">
+            <summary>
+            Gets a double from the datareader.
+            </summary>
+            <remarks>
+            Returns 0 for null.
+            </remarks>
+            <param name="name">Name of the column containing the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetNullableDouble(System.Int32)">
+            <summary>
+            Gets a double from the datareader.
+            </summary>
+            <remarks>
+            Returns 0 for null.
+            </remarks>
+            <param name="i">Ordinal column position of the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetGuid(System.String)">
+            <summary>
+            Gets a Guid value from the datareader.
+            </summary>
+            <remarks>
+            Returns Guid.Empty for null.
+            </remarks>
+            <param name="name">Name of the column containing the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetGuid(System.Int32)">
+            <summary>
+            Gets a Guid value from the datareader.
+            </summary>
+            <remarks>
+            Returns Guid.Empty for null.
+            </remarks>
+            <param name="i">Ordinal column position of the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.Read">
+            <summary>
+            Reads the next row of data from the datareader.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.NextResult">
+            <summary>
+            Moves to the next result set in the datareader.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.Close">
+            <summary>
+            Closes the datareader.
+            </summary>
+        </member>
+        <member name="P:GlobalCollection.eCollect.DataAccess.SafeDataReader.Depth">
+            <summary>
+            Returns the depth property value from the datareader.
+            </summary>
+        </member>
+        <member name="P:GlobalCollection.eCollect.DataAccess.SafeDataReader.FieldCount">
+            <summary>
+            Returns the FieldCount property from the datareader.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetNullableBoolean(System.String)">
+            <summary>
+            Gets a boolean value from the datareader.
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetNullableBoolean(System.Int32)">
+            <summary>
+            Gets a boolean value from the datareader.
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetBoolean(System.String)">
+            <summary>
+            Gets a boolean value from the datareader.
+            </summary>
+            <remarks>
+            Returns <see langword="false" /> for null.
+            </remarks>
+            <param name="name">Name of the column containing the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetBoolean(System.Int32)">
+            <summary>
+            Gets a boolean value from the datareader.
+            </summary>
+            <remarks>
+            Returns <see langword="false" /> for null.
+            </remarks>
+            <param name="i">Ordinal column position of the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetByte(System.String)">
+            <summary>
+            Gets a byte value from the datareader.
+            </summary>
+            <remarks>
+            Returns 0 for null.
+            </remarks>
+            <param name="name">Name of the column containing the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetByte(System.Int32)">
+            <summary>
+            Gets a byte value from the datareader.
+            </summary>
+            <remarks>
+            Returns 0 for null.
+            </remarks>
+            <param name="i">Ordinal column position of the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetNullableByte(System.String)">
+            <summary>
+            Gets a byte value from the datareader.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <param name="name">Name of the column containing the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetNullableByte(System.Int32)">
+            <summary>
+            Gets a byte value from the datareader.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <param name="i">Ordinal column position of the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetBytes(System.String,System.Int64,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Invokes the GetBytes method of the underlying datareader.
+            </summary>
+            <remarks>
+            Returns 0 for null.
+            </remarks>
+            <param name="name">Name of the column containing the value.</param>
+            <param name="buffer">Array containing the data.</param>
+            <param name="bufferOffset">Offset position within the buffer.</param>
+            <param name="fieldOffset">Offset position within the field.</param>
+            <param name="length">Length of data to read.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetBytes(System.Int32,System.Int64,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Invokes the GetBytes method of the underlying datareader.
+            </summary>
+            <remarks>
+            Returns 0 for null.
+            </remarks>
+            <param name="i">Ordinal column position of the value.</param>
+            <param name="buffer">Array containing the data.</param>
+            <param name="bufferOffset">Offset position within the buffer.</param>
+            <param name="fieldOffset">Offset position within the field.</param>
+            <param name="length">Length of data to read.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetChar(System.String)">
+            <summary>
+            Gets a char value from the datareader.
+            </summary>
+            <remarks>
+            Returns Char.MinValue for null.
+            </remarks>
+            <param name="name">Name of the column containing the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetChar(System.Int32)">
+            <summary>
+            Gets a char value from the datareader.
+            </summary>
+            <remarks>
+            Returns Char.MinValue for null.
+            </remarks>
+            <param name="i">Ordinal column position of the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetNullableChar(System.String)">
+            <summary>
+            Gets a char value from the datareader.
+            </summary>
+            <remarks>
+            Returns Char.MinValue for null.
+            </remarks>
+            <param name="name">Name of the column containing the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetNullableChar(System.Int32)">
+            <summary>
+            Gets a char value from the datareader.
+            </summary>
+            <remarks>
+            Returns Char.MinValue for null.
+            </remarks>
+            <param name="i">Ordinal column position of the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetChars(System.String,System.Int64,System.Char[],System.Int32,System.Int32)">
+            <summary>
+            Invokes the GetChars method of the underlying datareader.
+            </summary>
+            <remarks>
+            Returns 0 for null.
+            </remarks>
+            <param name="name">Name of the column containing the value.</param>
+            <param name="buffer">Array containing the data.</param>
+            <param name="bufferOffset">Offset position within the buffer.</param>
+            <param name="fieldOffset">Offset position within the field.</param>
+            <param name="length">Length of data to read.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetChars(System.Int32,System.Int64,System.Char[],System.Int32,System.Int32)">
+            <summary>
+            Invokes the GetChars method of the underlying datareader.
+            </summary>
+            <remarks>
+            Returns 0 for null.
+            </remarks>
+            <param name="i">Ordinal column position of the value.</param>
+            <param name="buffer">Array containing the data.</param>
+            <param name="bufferOffset">Offset position within the buffer.</param>
+            <param name="fieldOffset">Offset position within the field.</param>
+            <param name="length">Length of data to read.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetData(System.String)">
+            <summary>
+            Invokes the GetData method of the underlying datareader.
+            </summary>
+            <param name="name">Name of the column containing the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetData(System.Int32)">
+            <summary>
+            Invokes the GetData method of the underlying datareader.
+            </summary>
+            <param name="i">Ordinal column position of the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetDataTypeName(System.String)">
+            <summary>
+            Invokes the GetDataTypeName method of the underlying datareader.
+            </summary>
+            <param name="name">Name of the column containing the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetDataTypeName(System.Int32)">
+            <summary>
+            Invokes the GetDataTypeName method of the underlying datareader.
+            </summary>
+            <param name="i">Ordinal column position of the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetDateTime(System.String)">
+            <summary>
+            Gets a date value from the datareader.
+            </summary>
+            <remarks>
+            Returns DateTime.MinValue for null.
+            </remarks>
+            <param name="name">Name of the column containing the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetNullableDateTime(System.String)">
+            <summary>
+            Gets a nullable datetime value from the datareader/
+            </summary>
+            <param name="name">Name of the column containing the value.</param>
+            <returns>
+            Returns null if is null.
+            </returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetNullableDateTime(System.Int32)">
+            <summary>
+             Gets a date value from the datareader.
+            </summary>
+            <param name="i">Ordinal column position of the value</param>
+            <returns>Returns null if is null.</returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetDateTime(System.Int32)">
+            <summary>
+            Gets a date value from the datareader.
+            </summary>
+            <remarks>
+            Returns DateTime.MinValue for null.
+            </remarks>
+            <param name="i">Ordinal column position of the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetDecimal(System.String)">
+            <summary>
+            Gets a decimal value from the datareader.
+            </summary>
+            <remarks>
+            Returns 0 for null.
+            </remarks>
+            <param name="name">Name of the column containing the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetDecimal(System.Int32)">
+            <summary>
+            Gets a decimal value from the datareader.
+            </summary>
+            <remarks>
+            Returns 0 for null.
+            </remarks>
+            <param name="i">Ordinal column position of the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetNullableDecimal(System.String)">
+            <summary>
+            Gets a decimal value from the datareader.
+            </summary>
+            <remarks>
+            Returns 0 for null.
+            </remarks>
+            <param name="name">Name of the column containing the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetNullableDecimal(System.Int32)">
+            <summary>
+            Gets a decimal value from the datareader.
+            </summary>
+            <remarks>
+            Returns 0 for null.
+            </remarks>
+            <param name="i">Ordinal column position of the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetFieldType(System.String)">
+            <summary>
+            Invokes the GetFieldType method of the underlying datareader.
+            </summary>
+            <param name="name">Name of the column containing the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetFieldType(System.Int32)">
+            <summary>
+            Invokes the GetFieldType method of the underlying datareader.
+            </summary>
+            <param name="i">Ordinal column position of the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetFloat(System.String)">
+            <summary>
+            Gets a Single value from the datareader.
+            </summary>
+            <remarks>
+            Returns 0 for null.
+            </remarks>
+            <param name="name">Name of the column containing the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetFloat(System.Int32)">
+            <summary>
+            Gets a Single value from the datareader.
+            </summary>
+            <remarks>
+            Returns 0 for null.
+            </remarks>
+            <param name="i">Ordinal column position of the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetInt16(System.String)">
+            <summary>
+            Gets a Short value from the datareader.
+            </summary>
+            <remarks>
+            Returns 0 for null.
+            </remarks>
+            <param name="name">Name of the column containing the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetInt16(System.Int32)">
+            <summary>
+            Gets a Short value from the datareader.
+            </summary>
+            <remarks>
+            Returns 0 for null.
+            </remarks>
+            <param name="i">Ordinal column position of the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetNullableInt16(System.String)">
+            <summary>
+            Gets a Short value from the datareader.
+            </summary>
+            <remarks>
+            Returns 0 for null.
+            </remarks>
+            <param name="name">Name of the column containing the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetNullableInt16(System.Int32)">
+            <summary>
+            Gets a Short value from the datareader.
+            </summary>
+            <remarks>
+            Returns 0 for null.
+            </remarks>
+            <param name="i">Ordinal column position of the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetInt64(System.String)">
+            <summary>
+            Gets a Long value from the datareader.
+            </summary>
+            <remarks>
+            Returns 0 for null.
+            </remarks>
+            <param name="name">Name of the column containing the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetInt64(System.Int32)">
+            <summary>
+            Gets a Long value from the datareader.
+            </summary>
+            <remarks>
+            Returns 0 for null.
+            </remarks>
+            <param name="i">Ordinal column position of the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetNullableInt64(System.String)">
+            <summary>
+            Gets a Long value from the datareader.
+            </summary>
+            <remarks>
+            Returns 0 for null.
+            </remarks>
+            <param name="name">Name of the column containing the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetNullableInt64(System.Int32)">
+            <summary>
+            Gets a Long value from the datareader.
+            </summary>
+            <remarks>
+            Returns 0 for null.
+            </remarks>
+            <param name="i">Ordinal column position of the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetName(System.Int32)">
+            <summary>
+            Invokes the GetName method of the underlying datareader.
+            </summary>
+            <param name="i">Ordinal column position of the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetOrdinal(System.String)">
+            <summary>
+            Gets an ordinal value from the datareader.
+            </summary>
+            <param name="name">Name of the column containing the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetSchemaTable">
+            <summary>
+            Invokes the GetSchemaTable method of the underlying datareader.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.GetValues(System.Object[])">
+            <summary>
+            Invokes the GetValues method of the underlying datareader.
+            </summary>
+            <param name="values">An array of System.Object to
+            copy the values into.</param>
+        </member>
+        <member name="P:GlobalCollection.eCollect.DataAccess.SafeDataReader.IsClosed">
+            <summary>
+            Returns the IsClosed property value from the datareader.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.IsDBNull(System.Int32)">
+            <summary>
+            Invokes the IsDBNull method of the underlying datareader.
+            </summary>
+            <param name="i">Ordinal column position of the value.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.IsDBNull(System.String)">
+            <summary>
+            Invokes the IsDBNull method of the underlying datareader.
+            </summary>
+            <param name="name">Name of the column containing the value.</param>
+        </member>
+        <member name="P:GlobalCollection.eCollect.DataAccess.SafeDataReader.Item(System.String)">
+            <summary>
+            Returns a value from the datareader.
+            </summary>
+            <param name="name">Name of the column containing the value.</param>
+        </member>
+        <member name="P:GlobalCollection.eCollect.DataAccess.SafeDataReader.Item(System.Int32)">
+            <summary>
+            Returns a value from the datareader.
+            </summary>
+            <param name="i">Ordinal column position of the value.</param>
+        </member>
+        <member name="P:GlobalCollection.eCollect.DataAccess.SafeDataReader.RecordsAffected">
+            <summary>
+            Returns the RecordsAffected property value from the underlying datareader.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.Dispose(System.Boolean)">
+            <summary>
+            Disposes the object.
+            </summary>
+            <param name="disposing">True if called by
+            the public Dispose method.</param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.Dispose">
+            <summary>
+            Disposes the object.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.DataAccess.SafeDataReader.Finalize">
+            <summary>
+            Object finalizer.
+            </summary>
+        </member>
+    </members>
+</doc>

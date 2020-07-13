@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Proxies</name>
+    </assembly>
+    <members>
+        <member name="T:GlobalCollection.eCollect.Client.Proxies.ClientWrapper">
+            <summary>
+            Ensures that the proxy is closed, regardless of state.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.Client.Proxies.JobExecutorClient.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GlobalCollection.eCollect.Client.Proxies.JobExecutorClient"/> class.
+            </summary>
+            <param name="endPointConfigurationName">
+            The end point configuration name.
+            </param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.Client.Proxies.JobExecutorClient.Process(GlobalCollection.eCollect.Server.Services.DataContracts.Job)">
+            <summary>
+            The entry point of the JobExecutor service.
+            </summary>
+            <param name="job">
+            The job.
+            </param>
+        </member>
+        <member name="T:GlobalCollection.eCollect.Client.Proxies.LoggerClient">
+            <summary>
+            Proxy class for the Logger WCF service.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.Client.Proxies.LoggerClient.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:GlobalCollection.eCollect.Client.Proxies.LoggerClient"/> class.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.Client.Proxies.LoggerClient.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GlobalCollection.eCollect.Client.Proxies.LoggerClient"/> class.
+            </summary>
+            <param name="endPointConfigurationName">
+            The end point configuration name.
+            </param>
+        </member>
+        <member name="P:GlobalCollection.eCollect.Client.Proxies.LoggerClient.DefaultEventId">
+            <summary>
+            Default event ID to be applied to entries that don't have one.
+            </summary>
+        </member>
+        <member name="P:GlobalCollection.eCollect.Client.Proxies.LoggerClient.DefaultCategory">
+            <summary>
+            Default category to be applied to entries that don't have one.
+            </summary>
+        </member>
+        <member name="P:GlobalCollection.eCollect.Client.Proxies.LoggerClient.MinLogSeverity">
+            <summary>
+            Entries with a severity below this will be ignored.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.Client.Proxies.LoggerClient.Log(GlobalCollection.eCollect.Server.Services.DataContracts.LogEntry)">
+            <summary>
+            Save a new log entry if its severity is above the configured minimum. 
+            The following properties will be populated automatically
+            if they are left null: Host, User, Source, Category.
+            Furthermore, errors will be logged to the Windows event log if the logging
+            itself fails.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.Client.Proxies.LoggerClient.GetCaller">
+            <summary>
+            Gets name of method three calls down the stack trace. Which SHOULD be the name of the method
+            where an overload of Log is called.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.Client.Proxies.LoggerClient.GetRecentLogEntries(System.Int32)">
+            <summary>
+            Gets the recent log entries.
+            </summary>
+            <param name="numberOfEntries">
+            The number of entries.
+            </param>
+            <returns>
+            The list of log entries.
+            </returns>
+        </member>
+        <member name="T:GlobalCollection.eCollect.Client.Proxies.Logger">
+            <summary>
+            Utility class to log messages to the log table.
+            </summary>
+        </member>
+        <member name="P:GlobalCollection.eCollect.Client.Proxies.Logger.DefaultEventId">
+            <summary>
+            Default event ID to be applied to entries that don't have one.
+            </summary>
+        </member>
+        <member name="P:GlobalCollection.eCollect.Client.Proxies.Logger.DefaultCategory">
+            <summary>
+            Default category to be applied to entries that don't have one.
+            </summary>
+        </member>
+        <member name="P:GlobalCollection.eCollect.Client.Proxies.Logger.MinLogSeverity">
+            <summary>
+            Entries with a severity below this will be ignored.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.Client.Proxies.Logger.Log(System.String,GlobalCollection.eCollect.Server.Services.DataContracts.Severity)">
+            <summary>
+            Save a new log entry with a message and severity, all other properties
+            will be populated automatically with reasonable values.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.Client.Proxies.Logger.Log(System.String)">
+            <summary>
+            Save a new log entry with just a message, all other properties
+            will be populated automatically with reasonable values. Default severity is info.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.Client.Proxies.Logger.Log(System.String,System.String)">
+            <summary>
+            Save a new log entry with a message and category, all other properties
+            will be populated automatically with reasonable values. Default severity is info.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.Client.Proxies.Logger.Log(System.String,System.String,GlobalCollection.eCollect.Server.Services.DataContracts.Severity)">
+            <summary>
+            Save a new log entry with a message, category, and severity, all other properties
+            will be populated automatically with reasonable values.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.Client.Proxies.Logger.Log(GlobalCollection.eCollect.Server.Services.DataContracts.LogEntry)">
+            <summary>
+            Save a new log entry.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.Client.Proxies.QueueManagerClient.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:GlobalCollection.eCollect.Client.Proxies.QueueManagerClient"/> class.
+            </summary>
+        </member>
+        <member name="M:GlobalCollection.eCollect.Client.Proxies.QueueManagerClient.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GlobalCollection.eCollect.Client.Proxies.QueueManagerClient"/> class.
+            </summary>
+            <param name="endPointConfigurationName">
+            The end point configuration name.
+            </param>
+        </member>
+        <member name="M:GlobalCollection.eCollect.Client.Proxies.QueueManagerClient.AddJob(GlobalCollection.eCollect.Server.Services.DataContracts.Job)">
+            <summary>
+            Add a job to the queue.
+            </summary>
+            <param name="jobToAdd">
+            The job to add.
+            </param>
+            <returns>
+            The job queue id.
+            </returns>
+        </member>
+        <member name="M:GlobalCollection.eCollect.Client.Proxies.QueueManagerClient.ClaimJobByType(System.String,GlobalCollection.eCollect.Server.Services.DataContracts.JobType[])">
+            <summary>
+            Gets a non-autoprocessor job.
+            </summary>
+            <param name="serverId">
+            The server id.
+            </param>
+            <param name="jobTypes">
+            The job types.
+            </param>
+            <returns>
+            The job.
+            </returns>
+        </member>
+    </members>
+</doc>

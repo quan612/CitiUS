@@ -1,0 +1,46 @@
+﻿{
+  "allure": {
+    "directory": "allure-results",
+    "title": "Citi US Automation",
+    "links": [
+      "{link}",
+      "{issue}",
+      "{tms}"
+    ]
+  },
+  "specflow": {
+    "stepArguments": {
+      "convertToParameters": "true",
+      "paramNameRegex": "Field",
+      "paramValueRegex": "Value"
+    },
+    "grouping": {
+      "suites": {
+        "parentSuite": "^(Placement|InboundMaintenance|OutboundMaintenance)",
+        "suite": "^(Phones|Address|HomeWorkCell|Home
+        |HomeWork|HomeCell|Work|WorkCell|Cell|NoPhoneUpdate|Audit|Item11
+        |M_Record        
+        |X00_Record
+        |X01_Record)",
+        "subSuite": "^(BANK|COST|OILS|DSNB|CPLR|4thPhone|MultipleChanges|MSA|DSA|MASBK_MASRB)"
+      },
+      "behaviors": {
+        "epic": "^epic:?(.+)",
+        "story": "^story:?(.+)"
+      },
+      "packages": {
+        "package": "^package:?(.+)",
+        "testClass": "^class:?(.+)",
+        "testMethod": "^method:?(.+)"
+      }
+    },
+    "labels": {
+      "owner": "^owner:?(.+)",
+      "severity": "^(normal|blocker|critical|minor|trivial)"
+    },
+    "links": {
+      "issue": "^issue:(\\d+)",
+      "tms": "^tms:(\\d+)"
+    }
+  }
+}

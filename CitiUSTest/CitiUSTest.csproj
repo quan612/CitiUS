@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NUnit3TestAdapter.3.16.1\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\packages\NUnit3TestAdapter.3.16.1\build\net35\NUnit3TestAdapter.props')" />
+  <Import Project="..\packages\SpecFlow.Tools.MsBuild.Generation.3.1.97\build\SpecFlow.Tools.MsBuild.Generation.props" Condition="Exists('..\packages\SpecFlow.Tools.MsBuild.Generation.3.1.97\build\SpecFlow.Tools.MsBuild.Generation.props')" />
+  <Import Project="..\packages\SpecFlow.NUnit.3.1.97\build\SpecFlow.NUnit.props" Condition="Exists('..\packages\SpecFlow.NUnit.3.1.97\build\SpecFlow.NUnit.props')" />
+  <Import Project="..\packages\NUnit.3.12.0\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.12.0\build\NUnit.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B8CCB289-4B26-4DAC-A54E-5E104759F922}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CitiUSTest</RootNamespace>
+    <AssemblyName>CitiUSTest</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Allure.Commons, Version=3.0.0.10, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Allure.Commons.3.0.0.10\lib\net45\Allure.Commons.dll</HintPath>
+    </Reference>
+    <Reference Include="Allure.SpecFlowPlugin, Version=3.0.0.10, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SpecFlow.Allure.3.0.0.10\lib\net45\Allure.SpecFlowPlugin.dll</HintPath>
+    </Reference>
+    <Reference Include="Arx, Version=1.0.603.4314, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Arx.1.1.0\lib\net40\Arx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Arx.Core, Version=1.0.603.4314, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Arx.Core.1.1.0\lib\net40\Arx.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Arx.Insight.Entities, Version=2.3.231.3927, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Arx.Insight.Entities.1.4.0\lib\net40\Arx.Insight.Entities.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="BoDi, Version=1.4.1.0, Culture=neutral, PublicKeyToken=ff7cd5ea2744b496, processorArchitecture=MSIL">
+      <HintPath>..\packages\BoDi.1.4.1\lib\net45\BoDi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.1.0.1.35\lib\Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging, Version=1.2.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e">
+      <HintPath>..\packages\Common.Logging.1.2.0\lib\1.0\Common.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Contracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Contracts.1.0.1.35\lib\Contracts.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CookComputing.XmlRpcV2, Version=2.5.0.0, Culture=neutral, PublicKeyToken=a7d6e17aa302004d, processorArchitecture=MSIL">
+      <HintPath>..\packages\xmlrpcnet.2.5.0\lib\net20\CookComputing.XmlRpcV2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CsvHelper, Version=15.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.15.0.4\lib\net45\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="Cucumber.Messages, Version=6.0.1.0, Culture=neutral, PublicKeyToken=b10c5988214f940c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cucumber.Messages.6.0.1\lib\net45\Cucumber.Messages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DataAccess, Version=1.0.9.852, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DataAccess.1.2.0\lib\net40\DataAccess.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DnsClient, Version=1.0.7.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnsClient.1.0.7\lib\net45\DnsClient.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Gherkin, Version=6.0.0.0, Culture=neutral, PublicKeyToken=86496cfa5b4a5851, processorArchitecture=MSIL">
+      <HintPath>..\packages\Gherkin.6.0.0\lib\net45\Gherkin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.7.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.7.0\lib\net45\Google.Protobuf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MimeTypesMap, Version=1.0.8.0, Culture=neutral, PublicKeyToken=1b320cc08ad5aa89, processorArchitecture=MSIL">
+      <HintPath>..\packages\MimeTypesMap.1.0.8\lib\net452\MimeTypesMap.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.3.12.0\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Proxies, Version=1.0.66.839, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Proxies.1.2.0\lib\net40\Proxies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RazorEngine, Version=3.10.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.10.0\lib\net45\RazorEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Spring.Core, Version=1.3.2.40943, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spring.Core.1.3.2\lib\net40\Spring.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.3.0\lib\netstandard1.1\System.Buffers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TechTalk.SpecFlow, Version=3.1.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
+      <HintPath>..\packages\SpecFlow.3.1.97\lib\net45\TechTalk.SpecFlow.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TechTalk.SpecFlow.NUnit.SpecFlowPlugin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
+      <HintPath>..\packages\SpecFlow.NUnit.3.1.97\lib\net45\TechTalk.SpecFlow.NUnit.SpecFlowPlugin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TestLinkApi, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TestLinkApi.1.0.2\lib\net461\TestLinkApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TestLinkReporter, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TestLinkReporter.1.0.0.6\lib\TestLinkReporter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Utf8Json, Version=1.3.7.0, Culture=neutral, PublicKeyToken=8a73d3ba7e392e27, processorArchitecture=MSIL">
+      <HintPath>..\packages\Utf8Json.1.3.7\lib\net45\Utf8Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataAccess\ExtensionMethods.cs" />
+    <Compile Include="CustomStepDefinitions\CustomCitiStepDefinitions.cs" />
+    <Compile Include="Hooks\Hooks.cs" />
+    <Compile Include="Models\AccountAddressesRecords.cs" />
+    <Compile Include="Models\CitiInboundMaintenanceConfigurations.cs" />
+    <Compile Include="CustomStepDefinitions\CitiOutboundMTStepsDefinition.cs" />
+    <Compile Include="CustomStepDefinitions\CitiInboundMTStepsDefinition.cs" />
+    <Compile Include="Models\CitiNbsTestScope.cs" />
+    <Compile Include="Models\ECollecAppsTable\CitiExtrasOverflow.cs" />
+    <Compile Include="Models\ECollecAppsTable\CitiPhoneTrackerRecords.cs" />
+    <Compile Include="CustomStepDefinitions\CitiNewBusinessStepsDefinition.cs" />
+    <Compile Include="Models\CitiNbsConfigurations.cs" />
+    <Compile Include="Models\ConvertToDateTimeString.cs" />
+    <Compile Include="Models\IncomingAssignment\BaseRecord.cs" />
+    <Compile Include="Models\IncomingAssignment\MRecord.cs" />
+    <Compile Include="Models\IncomingAssignment\CitiNbsHRecords.cs" />
+    <Compile Include="Models\IncomingAssignment\X01Record.cs" />
+    <Compile Include="Models\IncomingAssignment\X00Record.cs" />
+    <Compile Include="Models\IncomingAssignment\CitiNbsHeaderRecord.cs" />
+    <Compile Include="Models\IncomingAssignment\AccountRecord.cs" />
+    <Compile Include="Models\Maintenance\BaseRecord.cs" />
+    <Compile Include="Models\Maintenance\HeaderRecord.cs" />
+    <Compile Include="Models\Maintenance\IncomingFinancialItems.cs" />
+    <Compile Include="Models\Maintenance\IncomingMaintenanceItems.cs" />
+    <Compile Include="Models\Maintenance\MaintenanceCommentRecord.cs" />
+    <Compile Include="Models\Maintenance\MaintenanceFinancialRecord.cs" />
+    <Compile Include="Models\Maintenance\MaintenanceDetailRecord.cs" />
+    <Compile Include="Models\Maintenance\OutgoingFileConstants.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\CitiTestRepository.cs" />
+    <Compile Include="Serializer\FixedWidthFieldAttribute.cs" />
+    <Compile Include="Serializer\FixedWidthReader.cs" />
+    <Compile Include="Serializer\FixedWidthRecordAttribute.cs" />
+    <Compile Include="Serializer\FixedWidthSerializer.cs" />
+    <Compile Include="Serializer\FixedWidthSerializerException.cs" />
+    <Compile Include="Service\CitiAssignmentTestService.cs" />
+    <Compile Include="Service\GeneralTestService.cs" />
+    <Compile Include="Service\OutgoingMaintenanceTestService.cs" />
+    <Compile Include="Service\IncomingMaintenanceTestService.cs" />
+    <Compile Include="Utility\ObjectCopier.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="allureConfig.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FeatureFiles\CitiIncomingMaintenanceFeatures\MASBK_MASRB.feature" />
+    <None Include="FeatureFiles\CitiIncomingMaintenanceFeatures\MSAFieldCodes.feature" />
+    <None Include="FeatureFiles\CitiIncomingMaintenanceFeatures\DSAFieldCodes.feature" />
+    <None Include="FeatureFiles\CitiIncomingMaintenanceFeatures\InboundMTMASPA.feature" />
+    <None Include="FeatureFiles\CitiIncomingMaintenanceFeatures\4thPhone.feature" />
+    <None Include="FeatureFiles\CitiIncomingMaintenanceFeatures\PhonesForOILS.feature" />
+    <None Include="FeatureFiles\CitiIncomingMaintenanceFeatures\PhonesForBANK.feature" />
+    <None Include="FeatureFiles\CitiIncomingMaintenanceFeatures\Commission Rate Changes MASCOM.feature" />
+    <None Include="FeatureFiles\CitiIncomingMaintenanceFeatures\InboundMTFinancialRecords.feature" />
+    <None Include="FeatureFiles\CitiIncomingMaintenanceFeatures\InboundMTStatusUpdateMASSTS.feature" />
+    <None Include="FeatureFiles\CitiIncomingMaintenanceFeatures\ADA Update MASACI.feature" />
+    <None Include="FeatureFiles\CitiNBSFeatures\4thPhone.feature" />
+    <None Include="FeatureFiles\CitiNBSFeatures\PhonesForCOST.feature" />
+    <None Include="FeatureFiles\CitiNBSFeatures\PhonesForCPLR.feature" />
+    <None Include="FeatureFiles\CitiNBSFeatures\PhonesForDSNB.feature" />
+    <None Include="FeatureFiles\CitiNBSFeatures\X01Record.feature" />
+    <None Include="FeatureFiles\CitiNBSFeatures\X00RecordMSA.feature" />
+    <None Include="FeatureFiles\CitiNBSFeatures\X00RecordChargeOff.feature" />
+    <None Include="FeatureFiles\CitiNBSFeatures\CitiNBSTestAccountRecord.feature" />
+    <None Include="FeatureFiles\CitiNBSFeatures\CitiNBSTestAdaIndicator.feature" />
+    <None Include="FeatureFiles\CitiNBSFeatures\CitiNBSTestAddress.feature" />
+    <None Include="FeatureFiles\CitiNBSFeatures\CitiNBSTestExceptionErrors.feature" />
+    <None Include="FeatureFiles\CitiNBSFeatures\CitiNBSTestLanguageIndicator.feature" />
+    <None Include="FeatureFiles\CitiNBSFeatures\MRecordDSA.feature" />
+    <None Include="FeatureFiles\CitiNBSFeatures\CitiNBSTestNewYorkAccount.feature" />
+    <None Include="FeatureFiles\CitiNBSFeatures\CitiNBSTestNoteRecord.feature" />
+    <None Include="FeatureFiles\CitiNBSFeatures\PhonesForBANK.feature" />
+    <None Include="FeatureFiles\CitiNBSFeatures\PhonesForOILS.feature" />
+    <None Include="FeatureFiles\CitiOutgoingMaintenanceFeatures\DemoForBank.feature" />
+    <None Include="FeatureFiles\CitiOutgoingMaintenanceFeatures\DemoForOils.feature" />
+    <None Include="FeatureFiles\CitiOutgoingMaintenanceFeatures\PhoneUpdateMultiplesForOILS.feature" />
+    <None Include="FeatureFiles\CitiOutgoingMaintenanceFeatures\PhoneUpdateTo4th.feature" />
+    <None Include="FeatureFiles\CitiOutgoingMaintenanceFeatures\PhoneUpdateToCellForCOST.feature" />
+    <None Include="FeatureFiles\CitiOutgoingMaintenanceFeatures\PhoneUpdateToCellForCPLR.feature" />
+    <None Include="FeatureFiles\CitiOutgoingMaintenanceFeatures\PhoneUpdateToCellForDSNB.feature" />
+    <None Include="FeatureFiles\CitiOutgoingMaintenanceFeatures\PhoneUpdateToCellForOILS.feature" />
+    <None Include="FeatureFiles\CitiOutgoingMaintenanceFeatures\PhoneUpdateToHomeWorkForOILS.feature" />
+    <None Include="FeatureFiles\CitiOutgoingMaintenanceFeatures\NoPhoneUpdateForBANK.feature" />
+    <None Include="FeatureFiles\CitiOutgoingMaintenanceFeatures\NoPhoneUpdateForOILS.feature" />
+    <None Include="FeatureFiles\CitiOutgoingMaintenanceFeatures\PhoneUpdateToCellForBANK.feature" />
+    <None Include="FeatureFiles\CitiOutgoingMaintenanceFeatures\PhoneUpdateMultiplesForBANK.feature" />
+    <None Include="FeatureFiles\CitiOutgoingMaintenanceFeatures\PhoneUpdateToHomeForOILS.feature" />
+    <None Include="FeatureFiles\CitiOutgoingMaintenanceFeatures\PhoneUpdateToWorkCellForBANK.feature" />
+    <None Include="FeatureFiles\CitiOutgoingMaintenanceFeatures\PhoneUpdateToWorkForOILS.feature" />
+    <None Include="FeatureFiles\CitiOutgoingMaintenanceFeatures\PhoneUpdateToWorkForBANK.feature" />
+    <None Include="FeatureFiles\CitiOutgoingMaintenanceFeatures\PhoneUpdateToHomeForBANK.feature" />
+    <None Include="FeatureFiles\CitiOutgoingMaintenanceFeatures\PhoneUpdateToHomeWorkCellForOILS.feature" />
+    <None Include="FeatureFiles\CitiOutgoingMaintenanceFeatures\PhoneUpdateToHomeWorkCellForBANK.feature" />
+    <None Include="FeatureFiles\Feature_Audit_January_2020\AddressNoEchoDomesticOILS.feature" />
+    <None Include="FeatureFiles\Feature_Audit_January_2020\AddressNoEchoForeign.feature" />
+    <None Include="FeatureFiles\Feature_Audit_January_2020\AddressNoEchoMacyUS.feature" />
+    <None Include="FeatureFiles\Feature_Audit_January_2020\AddressNoEchoMacyCanada.feature" />
+    <None Include="FeatureFiles\Feature_Audit_January_2020\AddressNoEchoDomesticBANK.feature" />
+    <None Include="FeatureFiles\Feature_Audit_January_2020\Item11_Wireless_OILS.feature" />
+    <None Include="FeatureFiles\Feature_Audit_January_2020\Item11_Wireless_BANK.feature" />
+    <None Include="FeatureFiles\Feature_Audit_January_2020\PhonesIndicator.feature" />
+    <None Include="FeatureFiles\Feature_Audit_January_2020\RPC_Phone_Criteria.feature" />
+    <None Include="packages.config" />
+    <None Include="specflow.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SpecFlowIntegration\SpecFlowIntegration.csproj">
+      <Project>{1ea03215-c877-4168-b814-85edc39a054d}</Project>
+      <Name>SpecFlowIntegration</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\NUnit.3.12.0\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.12.0\build\NUnit.props'))" />
+    <Error Condition="!Exists('..\packages\OctoPack.3.6.3\build\OctoPack.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\OctoPack.3.6.3\build\OctoPack.targets'))" />
+    <Error Condition="!Exists('..\packages\SpecFlow.3.1.97\build\SpecFlow.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SpecFlow.3.1.97\build\SpecFlow.targets'))" />
+    <Error Condition="!Exists('..\packages\SpecFlow.NUnit.3.1.97\build\SpecFlow.NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SpecFlow.NUnit.3.1.97\build\SpecFlow.NUnit.props'))" />
+    <Error Condition="!Exists('..\packages\SpecFlow.NUnit.3.1.97\build\SpecFlow.NUnit.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SpecFlow.NUnit.3.1.97\build\SpecFlow.NUnit.targets'))" />
+    <Error Condition="!Exists('..\packages\SpecFlow.Tools.MsBuild.Generation.3.1.97\build\SpecFlow.Tools.MsBuild.Generation.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SpecFlow.Tools.MsBuild.Generation.3.1.97\build\SpecFlow.Tools.MsBuild.Generation.props'))" />
+    <Error Condition="!Exists('..\packages\SpecFlow.Tools.MsBuild.Generation.3.1.97\build\SpecFlow.Tools.MsBuild.Generation.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SpecFlow.Tools.MsBuild.Generation.3.1.97\build\SpecFlow.Tools.MsBuild.Generation.targets'))" />
+    <Error Condition="!Exists('..\packages\NUnit3TestAdapter.3.16.1\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.3.16.1\build\net35\NUnit3TestAdapter.props'))" />
+  </Target>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="..\packages\OctoPack.3.6.3\build\OctoPack.targets" Condition="Exists('..\packages\OctoPack.3.6.3\build\OctoPack.targets')" />
+  <Import Project="..\packages\SpecFlow.3.1.97\build\SpecFlow.targets" Condition="Exists('..\packages\SpecFlow.3.1.97\build\SpecFlow.targets')" />
+  <Import Project="..\packages\SpecFlow.NUnit.3.1.97\build\SpecFlow.NUnit.targets" Condition="Exists('..\packages\SpecFlow.NUnit.3.1.97\build\SpecFlow.NUnit.targets')" />
+  <Import Project="..\packages\SpecFlow.Tools.MsBuild.Generation.3.1.97\build\SpecFlow.Tools.MsBuild.Generation.targets" Condition="Exists('..\packages\SpecFlow.Tools.MsBuild.Generation.3.1.97\build\SpecFlow.Tools.MsBuild.Generation.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
